@@ -3,9 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Camera System</title>
+    <title>AI Vision Pro - Advanced Live Camera System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- MediaPipe Face Detection SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_detection"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
 </head>
 <body>
-    <h1>AI Camera System</h1>
+    <div id="app">
+        <header>
+            <div class="logo">AI VISION <span class="accent">PRO</span></div>
+            <div id="system-status">
+                <div class="pulse-ring"></div>
+                <span id="status-text">SYSTEM LIVE</span>
+            </div>
+        </header>
+
+        <main>
+            <div id="viewport">
+                <video id="input-video" playsinline hidden></video>
+                <canvas id="output-canvas"></canvas>
+                <div id="overlay-ui">
+                    <div id="fps-badge">FPS: <span id="fps-val">0</span></div>
+                    <div id="mode-badge">MODE: <span id="mode-name">FACE DETECTION</span></div>
+                </div>
+            </div>
+
+            <aside id="sidebar">
+                <div class="card">
+                    <h3>ACTIVE MODULES</h3>
+                    <div id="module-status-list">
+                        <div class="status-item active">
+                            <span class="indicator"></span>
+                            Face Detection + Tracking
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>SYSTEM METRICS</h3>
+                    <div class="metrics">
+                        <div class="metric">
+                            <span class="label">Latency:</span>
+                            <span class="value" id="latency-val">-- ms</span>
+                        </div>
+                        <div class="metric">
+                            <span class="label">Architecture:</span>
+                            <span class="value">Modular JS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card terminal">
+                    <h3>LOGS</h3>
+                    <div id="log-console"></div>
+                </div>
+            </aside>
+        </main>
+
+        <footer>
+            <div class="shortcuts">
+                [F] Toggle Face | [N] Next Module | [Q] Quit
+            </div>
+            <div class="version">v1.0.0 Production Grade</div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/BaseModule.js"></script>
+    <script src="js/modules/FaceDetector.js"></script>
+    <script src="js/AIController.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const controller = new AIController();
+            controller.init();
+        });
+    </script>
 </body>
 </html>
