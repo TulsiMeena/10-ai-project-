@@ -1,0 +1,6 @@
+{
+  "name": "Ava - Your Sassy AI",
+  "description": "A real-time, voice-to-voice AI assistant with a sassy personality, powered by Gemini Live.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": []
+}
